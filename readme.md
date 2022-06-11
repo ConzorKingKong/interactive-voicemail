@@ -66,7 +66,23 @@ twilio serverless:deploy
 ```
 
 
+Create .env containing
+ACCOUNT_SID=
+AUTH_TOKEN=
+
+
+.twiliodeployinfo should generate with 
+
+{
+	"service_id": {
+		"serviceSid": "xxxxxx",
+		"latestBuild": "xxxxxx"
+	}
+}
+
+
 =====
 
 https://www.twilio.com/docs/twilio-cli/general-usage#webhooks -- talks about pinging localhost version of function
 
+twilio phone-numbers:update "+1xxxxxxxxxx" --voice-url http://localhost:3000/voicemail-proxy
