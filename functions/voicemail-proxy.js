@@ -7,22 +7,17 @@
     
     const twiml = new Twilio.twiml.VoiceResponse();
   
-    // This is for when the owner of the voicemail calls in
+    // When the owner of the voicemail calls in, we transfer
+    // them right to the voicemail
     if (event.From === OWNERPHONE)  {
       twiml.redirect("./voicemail-loop?index=0")
     } else {
-      // Try to connect to phone number twiml.dial. if called party hangs up, code underneath still runs. must be changed
-      twiml.dial(OWNERPHONE)
-      // If no answer, then take voicemail
-      // if call is answered and caller hangs up, following code will not execute
-      twiml.say('Please record your message after the tone. Press 1 when youre done recording');
-      twiml.record({
-          transcribe: true,
-          timeout: 10,
-          finishOnKey: '1',
-          action: 'voicemail-complete',
-          maxLength: 30
-      });
+      // We connect the unknown caller to us with twiml.dial
+      // if the call completes or times out we move to the handler in the action option
+      twiml.dial({
+        action: 'handle-call',
+        timeout: 17
+      }, OWNERPHONE)
     }
     
     callback(null, twiml);
