@@ -40,6 +40,9 @@ exports.handler = async function(context, event, callback) {
         break;
       case '3':
         let deleteResponse = await client.recordings(voicemailList[Index - 1].sid).remove();
+        voicemailList.splice(Index - 1, 1);
+        voicemailClean.splice(Index - 1, 1)
+        Index = Index - 1;
         twiml.say('Message deleted');
         break;
       case '9':
