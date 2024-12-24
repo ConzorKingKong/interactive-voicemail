@@ -9,17 +9,11 @@ This project requires some environment variables to be set. To keep your tokens 
 
 In your `.env` file, set the following values:
 
-| Variable | Description | Required |
-| :------- | :---------- | :------- |
-MY_PHONE_NUMBER Your phone number true
+| Variable        | Description       | Required |
+| :-------------- | :---------------- | :------- |
+| MY_PHONE_NUMBER | Your phone number | true     |
 
 ### Function Parameters
-
-`/voicemail-proxy` is protected and requires a valid Twilio signature as well as the following parameters:
-
-| Parameter | Description | Required |
-| :-------- | :---------- | :------- |
-
 
 `/handle-user-input` is protected and requires a valid Twilio signature as well as the following parameters:
 
